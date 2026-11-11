@@ -1,0 +1,29 @@
+[package]
+name = "volt-control"
+version = "0.1.0"
+description = "Volt 2 Gen 2 control surface (monitor/headphone volume, preamps, mixer, MIDI)"
+authors = ["epstomai"]
+license = "MIT"
+repository = ""
+edition = "2024"
+rust-version = "1.90"
+
+[lib]
+name = "volt_control_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.7.4", features = [] }
+
+[dependencies]
+tauri = { version = "2.12.5", features = ["tray-icon"] }
+tauri-plugin-log = "2"
+tauri-plugin-single-instance = "2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+log = "0.4"
+anyhow = "1"
+tokio = { version = "1", features = ["net", "io-util", "sync", "time", "macros", "rt"] }
+midir = "0.10"
+windows = { version = "0.62", features = ["Win32_Foundation", "Win32_Globalization", "Win32_Media_Audio", "Win32_Media_Audio_Endpoints", "Win32_System_Com", "Win32_System_Diagnostics_ToolHelp"] }
+winreg = "0.55"

@@ -1,0 +1,12 @@
+# agent notes and caches
+.antigravity/
+__pycache__/
+
+# research: keep only the scripts. Tree dumps, logs and screenshots contain
+# device serials; *_strings.txt are dumps of UA's proprietary binaries.
+research/*
+!research/*.py
+!research/*.js
+
+# build output not covered by volt-control/src-tauri/.gitignore
+volt-control/src-tauri/target-test/

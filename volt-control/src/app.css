@@ -1,0 +1,147 @@
+:root {
+  --bg: #141518;
+  --panel: #1b1c20;
+  --line: #2c2e33;
+  --fg: #e9e9ea;
+  --muted: #8b8e96;
+  --accent: #e8a33d;
+  --danger: #e8513d;
+  --learn: #78aaff;
+  --track: #33363c;
+  --knob: #2b2d32;
+  --sans: 'Segoe UI', 'Microsoft YaHei UI', system-ui, sans-serif;
+  --mono: 'Cascadia Mono', Consolas, monospace;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  color-scheme: dark;
+}
+
+/* CJK glyph shapes differ per language; <html lang> is set by i18n.applyLang. */
+:root:lang(zh-TW) {
+  --sans: 'Segoe UI', 'Microsoft JhengHei UI', system-ui, sans-serif;
+}
+:root:lang(ja) {
+  --sans: 'Segoe UI', 'Yu Gothic UI', 'Meiryo UI', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  font: 14px/1.4 var(--sans);
+  /* values change while you drag: keep digits from jittering */
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+
+/* Press feedback on every button, applied on pointer-down. */
+button {
+  transition:
+    transform 120ms var(--ease-out),
+    background-color 120ms ease,
+    color 120ms ease,
+    border-color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+#app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 14px 14px;
+}
+
+.panel h2 {
+  margin: 0 0 12px;
+  font: 700 13px/1 var(--sans);
+  letter-spacing: 0.04em;
+}
+
+.panel h2 small {
+  margin-left: 6px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+button.action {
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: 1px solid #000;
+  background: linear-gradient(#3a3d44, #2b2d32);
+  color: var(--fg);
+  font: 700 11px/1 var(--sans);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button.action:hover {
+    border-color: var(--accent);
+  }
+}
+
+button.action.ghost {
+  background: transparent;
+  border-color: var(--line);
+}
+
+select,
+input[type='number'] {
+  background: #111215;
+  color: var(--fg);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 4px 6px;
+  font: 12px var(--sans);
+}
+
+input[type='range'] {
+  accent-color: var(--accent);
+}
+
+input[type='checkbox'] {
+  accent-color: var(--accent);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2c2e33;
+  border-radius: 5px;
+}
