@@ -1,5 +1,7 @@
 # UAD-RE · Volt Control
 
+**简体中文** | [English](README.en.md)
+
 为 **Universal Audio Volt 2 Gen 2** 做的第三方控制软件：在软件里直接调监听音箱/耳机音量，并支持 MIDI 控制器。
 
 ## 目录
@@ -22,7 +24,8 @@
 - **主控**：监听音量 / 静音 / 单声道 / Dim；耳机音量 / 静音；输入 1、2 的增益、+48V（二次确认）、Tone、压缩、反相、DIRECT（直接监听）、自动增益、插孔类型显示、立体声链接
 - **混音**：监听混音与 CUE 1 / CUE 2 的推子、声像、静音、Solo、推子前发送，带实时电平表
 - **MIDI**：右键任意控件 → 转动控制器即完成绑定；支持 7-bit / 14-bit CC（学习时自动识别）、绝对旋钮/推子、三种相对编码器、按键切换/按住/触发；音量类默认启用软接管（防跳变）；值变化时回发给控制器（LED 环 / 电动推子）
-- **设置**：采样率、屏幕亮度、No-Clip、定位设备、电平表保持时间；**音量安全上限**（同时限制界面和 MIDI）
+- **设置**：采样率、屏幕亮度、No-Clip、定位设备、电平表保持时间、闲置熄屏；**音量安全上限**（同时限制界面和 MIDI）
+- **多语言**：简体中文、繁體中文、English、日本語；默认跟随 Windows 显示语言，可在设置中切换，即时生效
 - 关窗缩到托盘继续响应 MIDI；登录 Windows 时自动在托盘启动；托盘菜单可一键静音监听/耳机；断线自动重连
 
 ## 构建与运行
@@ -34,6 +37,8 @@ npx tauri dev      # 开发
 npx tauri build    # 安装包：src-tauri/target/release/bundle/nsis/
 ```
 
+发布版请用 `npx tauri build` 构建，不要直接 `cargo build --release`：后者不会嵌入前端，窗口会去连开发服务器，显示「localhost 拒绝连接」。
+
 测试：
 
 ```bash
@@ -42,7 +47,7 @@ cargo test                                   # 单元测试
 cargo test live_ -- --ignored --nocapture    # 连真机：只读发现 + 无害参数写入回滚
 ```
 
-配置文件：`%APPDATA%\com.knia.voltcontrol\config.json`（MIDI 端口与映射、音量上限）。
+配置文件：`%APPDATA%\com.knia.voltcontrol\config.json`（MIDI 端口与映射、音量上限、界面语言）。
 
 ## 许可证
 
